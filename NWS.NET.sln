@@ -9,7 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NWS.NET.Common", "Common\NW
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NWS", "NWS\NWS.csproj", "{B42236C6-D19A-4057-922F-CAFA6251FB60}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NWS.NET.Tests", "Tests\NWS.NET.Tests.csproj", "{71597472-5A50-4D1C-AB8C-7028CD5C23FA}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C1E201CE-BDA7-4A64-9A21-F7013C16DC03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NWS.NET.Tests.UnitTests", "Tests\UnitTests\NWS.NET.Tests.UnitTests.csproj", "{76A201DC-949B-4CE6-B78B-FA2E08B4A279}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,9 +34,12 @@ Global
 		{B42236C6-D19A-4057-922F-CAFA6251FB60}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B42236C6-D19A-4057-922F-CAFA6251FB60}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B42236C6-D19A-4057-922F-CAFA6251FB60}.Release|Any CPU.Build.0 = Release|Any CPU
-		{71597472-5A50-4D1C-AB8C-7028CD5C23FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{71597472-5A50-4D1C-AB8C-7028CD5C23FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{71597472-5A50-4D1C-AB8C-7028CD5C23FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{71597472-5A50-4D1C-AB8C-7028CD5C23FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76A201DC-949B-4CE6-B78B-FA2E08B4A279}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76A201DC-949B-4CE6-B78B-FA2E08B4A279}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76A201DC-949B-4CE6-B78B-FA2E08B4A279}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76A201DC-949B-4CE6-B78B-FA2E08B4A279}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{76A201DC-949B-4CE6-B78B-FA2E08B4A279} = {C1E201CE-BDA7-4A64-9A21-F7013C16DC03}
 	EndGlobalSection
 EndGlobal

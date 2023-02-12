@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Api\NWS.NET.Api.csproj" />
+    <ProjectReference Include="..\..\Common\NWS.NET.Common.csproj" />
   </ItemGroup>
 
 </Project>
