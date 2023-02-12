@@ -1,4 +1,4 @@
-using NWS.Dtos.Components.ForecastDto.ForecastPropertyComponents;
+using NWS.Dtos.Components.Common;
 using System.Collections.ObjectModel;
 
 namespace NWS.Dtos.Components.ForecastDto;
