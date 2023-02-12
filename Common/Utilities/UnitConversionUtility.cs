@@ -10,13 +10,6 @@ public static class UnitConversionUtility
 
 	public static double ConvertKilometersPerHourToMilesPerHour(double speed) => speed / 1.609;
 
-	public static double? TryConvertToDouble(dynamic value)
-	{
-		var success = double.TryParse(value.ToString(), out double result);
-
-		return success ? result : null;
-	}
-
 	public static TemperatureEnum MapTemperature(this string temperature)
 	{
 		if (temperature is null)
