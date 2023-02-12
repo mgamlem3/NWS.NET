@@ -4,16 +4,6 @@ namespace NWS.NET.Api.Tests;
 
 public class WeatherApiTests
 {
-	// protected WeatherApiTests()
-	// {
-
-	// }
-
-    // public void Dispose()
-    // {
-        
-    // }
-
 	[Theory]
     [InlineData(47.6588, 117.4260)]
 	public void Test1(double latitude, double longitude)
