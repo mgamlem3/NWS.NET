@@ -9,5 +9,5 @@ public static class Pressure
 	public const string Bars = "bar";
 	public const string Pascal = "pa";
 
-	public static ReadOnlyCollection<string> GetAllUnitOptions() => new(new List<string>() { InchesOfMercury, MilimetersOfMercury, Bars });
+	public static ReadOnlyCollection<string> GetAllUnitOptions() => new(new List<string>() { InchesOfMercury, MilimetersOfMercury, Bars, Pascal });
 }
