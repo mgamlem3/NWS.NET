@@ -2,7 +2,7 @@ using NWS.Dtos.Components.PointsDto.PointsProperties;
 
 namespace NWS.Dtos.Components;
 
-public sealed record PointsProperties 
+public sealed record PointsProperties
 {
 	public string Id { get; set; }
 	public string Type { get; set; }

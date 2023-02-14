@@ -1,4 +1,4 @@
-﻿using NWS.Dtos.Components;
+using NWS.Dtos.Components;
 using NWS.Dtos.Components.ForecastDto;
 
 namespace NWS.Dtos;
