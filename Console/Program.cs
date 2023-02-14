@@ -1,6 +1,6 @@
 ﻿using NWS.NET.Api.Weather;
 
-namespace NWS.NET.Console;
+namespace NWS.NET.TestConsole;
 
 internal class Program
 {
