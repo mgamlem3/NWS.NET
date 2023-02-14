@@ -1,4 +1,4 @@
-﻿using NWS.NET.Api.Weather;
+using NWS.NET.Api.Weather;
 
 namespace NWS.NET.Console;
 
