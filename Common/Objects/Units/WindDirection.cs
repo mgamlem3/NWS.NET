@@ -4,22 +4,22 @@ namespace NWS.NET.Common.Objects.Units;
 
 public static class WindDirection
 {
-	public const string North = "N";
-	public const string NorthNorthEast = "NNE";
-	public const string NorthEast = "NE";
-	public const string EastNorthEast = "ENE";
-	public const string East = "E";
-	public const string EastSouthEast = "ESE";
-	public const string SouthEast = "SE";
-	public const string SouthSouthEast = "SSE";
-	public const string South = "S";
-	public const string SouthSouthWest = "SSW";
-	public const string SouthWest = "SW";
-	public const string WestSouthWest = "WSW";
-	public const string West = "W";
-	public const string WestNorthWest = "WNW";
-	public const string NorthWest = "NW";
-	public const string NorthNorthWest = "NNW";
+	public const string North = "n";
+	public const string NorthNorthEast = "nne";
+	public const string NorthEast = "ne";
+	public const string EastNorthEast = "ene";
+	public const string East = "e";
+	public const string EastSouthEast = "ese";
+	public const string SouthEast = "se";
+	public const string SouthSouthEast = "sse";
+	public const string South = "s";
+	public const string SouthSouthWest = "ssw";
+	public const string SouthWest = "sw";
+	public const string WestSouthWest = "wsw";
+	public const string West = "w";
+	public const string WestNorthWest = "wnw";
+	public const string NorthWest = "nw";
+	public const string NorthNorthWest = "nnw";
 
 	public static ReadOnlyCollection<string> GetAllUnitOptions() => new(new List<string>() { North, NorthNorthEast, NorthEast, EastNorthEast, East, EastSouthEast, SouthEast, SouthSouthEast, South, SouthSouthWest, SouthWest, WestSouthWest, West, WestNorthWest, NorthWest, NorthNorthWest });
 }
