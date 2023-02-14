@@ -1,5 +1,7 @@
 using NWS.NET.Api.Weather;
 
+namespace NWS.NET.TestConsole;
+
 internal class Program
 {
 	public static async Task Main(string[] args)
