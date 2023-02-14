@@ -26,25 +26,25 @@ public sealed class ApiWeatherService : IApiService
 	/// <param name="latitude">Latitude</param>
 	/// <param name="longitude">Longitude</param>
 	/// <returns>Collection of CurrentConditions</returns>
-	/// <exception cref="ApiException"></exception>
+	/// <exception cref="NWSApiException"></exception>
 	public async Task<ReadOnlyCollection<CurrentConditions?>?> GetCurrentConditionsAsync(double latitude, double longitude)
 	{
 		var pointsResponse = await m_httpClient.GetAsync($"https://api.weather.gov/points/{latitude:0.####},{longitude:0.####}");
 
 		if (!pointsResponse.IsSuccessStatusCode)
-			throw new ApiException($"{pointsResponse.StatusCode} was returned from api");
+			throw new NWSApiException($"{pointsResponse.StatusCode} was returned from api");
 
 		var pointsDto = JsonConvert.DeserializeObject<PointsDto>(await pointsResponse.Content.ReadAsStringAsync());
 
 		var observationStationsUrl = pointsDto?.Properties.ObservationStations;
 
 		if (observationStationsUrl is null)
-			throw new ApiException("Observation URL was not returned");
+			throw new NWSApiException("Observation URL was not returned");
 
 		var observationResponse = await m_httpClient.GetAsync(observationStationsUrl);
 
 		if (!observationResponse.IsSuccessStatusCode)
-			throw new ApiException($"{observationResponse.StatusCode} returned from api");
+			throw new NWSApiException($"{observationResponse.StatusCode} returned from api");
 
 		var observationContent = await observationResponse.Content.ReadAsStringAsync();
 
@@ -61,10 +61,16 @@ public sealed class ApiWeatherService : IApiService
 			{
 				return await GetCurrentConditionsForStationAsync(x?.MapWeatherStation());
 			}
+			catch (NWSApiException e)
+			{
+				Console.WriteLine(e);
+			}
 			finally
 			{
 				s_semaphore.Release();
 			}
+
+			return null;
 		});
 
 		if (tasks is null)
@@ -81,25 +87,25 @@ public sealed class ApiWeatherService : IApiService
 	/// <param name="latitude">Latitude</param>
 	/// <param name="longitude">Longitude</param>
 	/// <returns>A Forecast containing forecast data for the given latitude and longitude</returns>
-	/// <exception cref="ApiException"></exception>
+	/// <exception cref="NWSApiException"></exception>
 	public async Task<Forecast?> GetForecastAsync(double latitude, double longitude)
 	{
 		var pointsResponse = await m_httpClient.GetAsync($"https://api.weather.gov/points/{latitude:0.####},{longitude:0.####}");
 
 		if (!pointsResponse.IsSuccessStatusCode)
-			throw new ApiException($"{pointsResponse.StatusCode} was returned from api");
+			throw new NWSApiException($"{pointsResponse.StatusCode} was returned from api");
 
 		var pointsDto = JsonConvert.DeserializeObject<PointsDto>(await pointsResponse.Content.ReadAsStringAsync());
 
 		var forecastUri = pointsDto?.Properties?.Forecast;
 
 		if (forecastUri is null)
-			throw new ApiException("Forecast URL was not returned");
+			throw new NWSApiException("Forecast URL was not returned");
 
 		var forecastResponse = await m_httpClient.GetAsync(forecastUri);
 
 		if (!forecastResponse.IsSuccessStatusCode)
-			throw new ApiException($"{forecastResponse.StatusCode} was returned from api");
+			throw new NWSApiException($"{forecastResponse.StatusCode} was returned from api");
 
 		var forecastResponseContent = await forecastResponse.Content.ReadAsStringAsync();
 		var forecastDto = JsonConvert.DeserializeObject<ForecastDto>(forecastResponseContent);
@@ -123,7 +129,7 @@ public sealed class ApiWeatherService : IApiService
 	/// </summary>
 	/// <param name="station">Station name</param>
 	/// <returns></returns>
-	/// <exception cref="ApiException"></exception>
+	/// <exception cref="NWSApiException"></exception>
 	public async Task<CurrentConditions?> GetCurrentConditionsForStationAsync(string? station) => await GetCurrentConditionsForStationAsync(new WeatherStation { StationIdentifier = station });
 
 	/// <summary>
@@ -131,7 +137,7 @@ public sealed class ApiWeatherService : IApiService
 	/// </summary>
 	/// <param name="station">Weather station to use</param>
 	/// <returns></returns>
-	/// <exception cref="ApiException"></exception>
+	/// <exception cref="NWSApiException"></exception>
 	public async Task<CurrentConditions?> GetCurrentConditionsForStationAsync(WeatherStation? station)
 	{
 		if (station is null)
@@ -140,7 +146,7 @@ public sealed class ApiWeatherService : IApiService
 		var observationsResponse = await m_httpClient.GetAsync($"https://api.weather.gov/stations/{station.StationIdentifier}/observations/latest");
 
 		if (!observationsResponse.IsSuccessStatusCode)
-			throw new ApiException($"{observationsResponse.StatusCode} was returned from api");
+			throw new NWSApiException($"{observationsResponse.StatusCode} was returned from api {station.StationIdentifier}");
 
 		var observationContent = await observationsResponse.Content.ReadAsStringAsync();
 		var observationDto = JsonConvert.DeserializeObject<ObservationDto>(observationContent);
