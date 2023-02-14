@@ -21,7 +21,7 @@ public static class UnitConversionUtility
 	public static double ConvertKilometersPerHourToMilesPerHour(double speed) => speed / c_kphMphConversionValue;
 
 	public static double ConvertMilesPerHourToKilometersPerHour(double speed) => speed * c_kphMphConversionValue;
-	
+
 	private const double c_kelvinCelciusConversionValue = 273.15;
 	private const double c_mpsMphConversionValue = 2.237;
 	private const double c_kphMphConversionValue = 1.609;
