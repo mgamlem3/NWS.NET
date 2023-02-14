@@ -119,7 +119,15 @@ public sealed class ApiWeatherService : IApiService
 	}
 
 	/// <summary>
-	/// Gets current conditions for the closest weather station
+	/// Gets current conditions for the specified weather station
+	/// </summary>
+	/// <param name="station">Station name</param>
+	/// <returns></returns>
+	/// <exception cref="ApiException"></exception>
+	public async Task<CurrentConditions?> GetCurrentConditionsForStationAsync(string? station) => await GetCurrentConditionsForStationAsync(new WeatherStation { StationIdentifier = station });
+
+	/// <summary>
+	/// Gets current conditions for the specified weather station
 	/// </summary>
 	/// <param name="station">Weather station to use</param>
 	/// <returns></returns>
