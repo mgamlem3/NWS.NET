@@ -1,5 +1,3 @@
-using NWS.NET.Common.Enums.Units;
-
 namespace NWS.NET.Api.Weather;
 
 /// <summary>
@@ -13,11 +11,11 @@ public sealed record ForecastPeriod
 	public DateTime? EndTime { get; set; }
 	public bool? IsDayTime { get; set; }
 	public double? Temperature { get; set; }
-	public TemperatureEnum? TemperatureUnit { get; set; }
+	public string? TemperatureUnit { get; set; }
 	public string? TemperatureTrend { get; set; }
 	public double? WindSpeed { get; set; }
-	public VelocityEnum? WindSpeedUnit { get; set; }
-	public WindDirectionEnum? WindDirection { get; set; }
+	public string? WindSpeedUnit { get; set; }
+	public string? WindDirection { get; set; }
 	public string? ShortForecastDescription { get; set; }
 	public string? LongForecastDescription { get; set; }
 }

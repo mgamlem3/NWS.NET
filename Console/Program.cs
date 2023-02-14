@@ -8,5 +8,9 @@ internal class Program
 		var service = new ApiWeatherService("NWS.NET.Testing");
 		var response = await service.GetForecastAsync(47.6588, -117.4260);
 		Console.WriteLine(response);
+		var response2 = await service.GetCurrentConditionsAsync(47.6588, -117.4260);
+		Console.WriteLine(response);
+		var response3 = await service.GetCurrentConditionsForStationAsync("KGEG");
+		Console.WriteLine(response);
 	}
 }

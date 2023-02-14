@@ -1,7 +1,3 @@
-using Mg3.Utility.StringUtility;
-using NWS.NET.Common.Enums.Units;
-using NWS.NET.Common.Utilities;
-
 namespace NWS.Dtos.Components.ForecastDto;
 
 public sealed class ForecastPeriodDto
@@ -19,24 +15,4 @@ public sealed class ForecastPeriodDto
 	public Uri? Icon { get; set; }
 	public string? ShortForecast { get; set; }
 	public string? DetailedForecast { get; set; }
-
-	public TemperatureEnum? GetTemperatureUnitEnum()
-	{
-		if (TemperatureUnit.IsNullOrWhitespace())
-			return null;
-
-		var enumUnit = Regexes.UnitRegex().Match(TemperatureUnit).Value;
-
-		return NET.Common.Objects.Units.Temperature.GetAllUnitOptions().First(x => x == TemperatureUnit).MapTemperature();
-	}
-
-	public WindDirectionEnum? GetWindDirectionUnitEnum()
-	{
-		if (WindDirection.IsNullOrWhitespace())
-			return null;
-
-		var enumUnit = Regexes.UnitRegex().Match(WindDirection).Value;
-
-		return NET.Common.Objects.Units.WindDirection.GetAllUnitOptions().First(x => x == WindDirection).MapWindDirection();
-	}
 }

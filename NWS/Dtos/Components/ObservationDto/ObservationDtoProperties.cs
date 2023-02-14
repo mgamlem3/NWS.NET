@@ -1,7 +1,4 @@
-using Mg3.Utility.StringUtility;
 using NWS.Dtos.Components.Common;
-using NWS.NET.Common.Enums.Units;
-using NWS.NET.Common.Utilities;
 
 namespace NWS.Dtos.Components.ObservationDto;
 
@@ -38,52 +35,4 @@ public sealed record ObservationDtoProperties
 	public WindChill? WindChill { get; set; }
 	public HeatIndex? HeatIndex { get; set; }
 	public IReadOnlyCollection<CloudLayer>? CloudLayers { get; set; }
-
-	public TemperatureEnum? GetTemperatureUnitEnum() => MapTemperatureUnitEnum(Temperature?.UnitCode);
-	public TemperatureEnum? GetDewPointUnitEnum() => MapTemperatureUnitEnum(Dewpoint?.UnitCode);
-	public VelocityEnum? GetWindSpeedUnitEnum() => MapVelocityUnitEnum(WindSpeed?.UnitCode);
-	public VelocityEnum? GetWindGustUnitEnum() => MapVelocityUnitEnum(WindGust?.UnitCode);
-	public TemperatureEnum? GetWindChillUnitEnum() => MapTemperatureUnitEnum(WindChill?.UnitCode);
-	public TemperatureEnum? GetHeatIndexUnitEnum() => MapTemperatureUnitEnum(HeatIndex?.UnitCode);
-	public PressureEnum? GetBarometricPressureUnitEnum() => MapPressureUnitEnum(BarometricPressure?.UnitCode);
-	public PressureEnum? GetSeaLevelPressureUnitEnum() => MapPressureUnitEnum(SeaLevelPressure?.UnitCode);
-	public LengthEnum? GetVisibilityUnitEnum() => MapLengthUnitEnum(Visibility?.UnitCode);
-
-	private static TemperatureEnum? MapTemperatureUnitEnum(string? value)
-	{
-		if (value.IsNullOrWhitespace())
-			return null;
-
-		var enumUnit = Regexes.UnitRegex().Match(value).Value;
-
-		return NET.Common.Objects.Units.Temperature.GetAllUnitOptions().First(x => x == value).MapTemperature();
-	}
-	private static VelocityEnum? MapVelocityUnitEnum(string? value)
-	{
-		if (value.IsNullOrWhitespace())
-			return null;
-
-		var enumUnit = Regexes.UnitRegex().Match(value).Value;
-
-		return NET.Common.Objects.Units.Velocity.GetAllUnitOptions().First(x => x == value).MapVelocity();
-	}
-	private static PressureEnum? MapPressureUnitEnum(string? value)
-	{
-		if (value.IsNullOrWhitespace())
-			return null;
-
-		var enumUnit = Regexes.UnitRegex().Match(value).Value;
-
-		return NET.Common.Objects.Units.Pressure.GetAllUnitOptions().First(x => x == value).MapPressure();
-	}
-private static LengthEnum? MapLengthUnitEnum(string? value)
-	{
-		if (value.IsNullOrWhitespace())
-			return null;
-
-		var enumUnit = Regexes.UnitRegex().Match(value).Value;
-
-		return NET.Common.Objects.Units.Length.GetAllUnitOptions().First(x => x == value).MapLength();
-	}
-
 }

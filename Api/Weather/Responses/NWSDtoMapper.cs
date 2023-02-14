@@ -2,7 +2,7 @@ using NWS.Dtos;
 using NWS.Dtos.Components.ForecastDto;
 using NWS.Dtos.Components.StationDto;
 using NWS.NET.Common.Objects;
-using NWS.NET.Common.Utilities;
+using NWS.Units;
 
 namespace NWS.NET.Api.Weather.Responses;
 
@@ -18,7 +18,7 @@ public static class NWSDtoMapper
 			UpdatedAt = dto.Properties.UpdatedAt,
 			GeneratedAt = dto.Properties.GeneratedAt,
 			Elevation = dto.Properties.Elevation.Value,
-			ElevationUnit = dto.Properties.Elevation.GetLengthUnitEnum(),
+			ElevationUnit = NWSUnits.Map(dto.Properties.Elevation.UnitCode),
 			Periods = new List<ForecastPeriod>(),
 			RawData = rawContent,
 		};
@@ -39,10 +39,10 @@ public static class NWSDtoMapper
 			EndTime = dto.EndTime,
 			IsDayTime = dto.IsDaytime,
 			Temperature = dto.Temperature,
-			TemperatureUnit = dto.GetTemperatureUnitEnum(),
+			TemperatureUnit = NWSUnits.Map(dto.TemperatureUnit),
 			TemperatureTrend = dto.TemperatureTrend,
 			WindSpeed = windSpeed,
-			WindDirection = dto.WindDirection?.MapWindDirection(),
+			WindDirection = dto.WindDirection,
 			ShortForecastDescription = dto.ShortForecast,
 			LongForecastDescription = dto.DetailedForecast,
 		};
@@ -53,26 +53,26 @@ public static class NWSDtoMapper
 		ObservationDate = dto?.Properties?.Timestamp,
 		WeatherStation = station,
 		Temperature = dto?.Properties?.Temperature?.Value,
-		TemperatureUnit = dto?.Properties?.GetTemperatureUnitEnum(),
+		TemperatureUnit = NWSUnits.Map(dto?.Properties?.Temperature?.UnitCode),
 		Description = dto?.Properties?.TextDescription,
 		DewPoint = dto?.Properties?.Dewpoint?.Value,
-		DewPointUnit = dto?.Properties?.GetDewPointUnitEnum(),
+		DewPointUnit = NWSUnits.Map(dto?.Properties?.Dewpoint?.UnitCode),
 		WindDirection = dto?.Properties?.WindDirection?.Value,
 		WindSpeed = dto?.Properties?.WindSpeed?.Value,
-		WindSpeedUnit = dto?.Properties?.GetWindSpeedUnitEnum(),
+		WindSpeedUnit = NWSUnits.Map(dto?.Properties?.WindSpeed?.UnitCode),
 		WindGust = dto?.Properties?.WindGust?.Value,
-		WindGustUnit = dto?.Properties?.GetWindGustUnitEnum(),
+		WindGustUnit = NWSUnits.Map(dto?.Properties?.WindGust?.UnitCode),
 		BarometricPressure = dto?.Properties?.BarometricPressure?.Value,
-		BarometricPressureUnit = dto?.Properties?.GetBarometricPressureUnitEnum(),
+		BarometricPressureUnit = NWSUnits.Map(dto?.Properties?.BarometricPressure?.UnitCode),
 		SeaLevelPressure = dto?.Properties?.SeaLevelPressure?.Value,
-		SeaLevelPressureUnit = dto?.Properties?.GetSeaLevelPressureUnitEnum(),
+		SeaLevelPressureUnit = NWSUnits.Map(dto?.Properties?.SeaLevelPressure?.UnitCode),
 		Visibility = dto?.Properties?.Visibility?.Value,
-		VisibilityUnit = dto?.Properties?.GetVisibilityUnitEnum(),
+		VisibilityUnit = NWSUnits.Map(dto?.Properties?.Visibility?.UnitCode),
 		RelativeHumidityPercent = dto?.Properties?.RelativeHumidity?.Value,
 		WindChill = dto?.Properties?.WindChill?.Value,
-		WindChillUnit = dto?.Properties?.GetWindChillUnitEnum(),
+		WindChillUnit = NWSUnits.Map(dto?.Properties?.WindChill?.UnitCode),
 		HeatIndex = dto?.Properties?.HeatIndex?.Value,
-		HeatIndexUnit = dto?.Properties?.GetHeatIndexUnitEnum(),
+		HeatIndexUnit = NWSUnits.Map(dto?.Properties?.HeatIndex?.UnitCode),
 		RawData = rawContent,
 		// TODO: add cloud layers
 	};

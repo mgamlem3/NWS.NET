@@ -20,6 +20,7 @@ public static class WindDirection
 	public const string WestNorthWest = "wnw";
 	public const string NorthWest = "nw";
 	public const string NorthNorthWest = "nnw";
+	public const string Degrees = "°";
 
-	public static ReadOnlyCollection<string> GetAllUnitOptions() => new(new List<string>() { North, NorthNorthEast, NorthEast, EastNorthEast, East, EastSouthEast, SouthEast, SouthSouthEast, South, SouthSouthWest, SouthWest, WestSouthWest, West, WestNorthWest, NorthWest, NorthNorthWest });
+	public static ReadOnlyCollection<string> GetAllUnitOptions() => new(new List<string>() { North, NorthNorthEast, NorthEast, EastNorthEast, East, EastSouthEast, SouthEast, SouthSouthEast, South, SouthSouthWest, SouthWest, WestSouthWest, West, WestNorthWest, NorthWest, NorthNorthWest, Degrees });
 }
