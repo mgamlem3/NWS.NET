@@ -5,27 +5,22 @@ namespace NWS.Units;
 
 public static class NWSUnits
 {
-	public static string? Map(this string? unit)
+	public static string? Map(this string? nwsUnit)
 	{
-		if (unit.IsNullOrWhitespace())
+		if (nwsUnit.IsNullOrWhitespace())
 			return null;
 
-		if (unit.Contains(c_celcius))
-			return Temperature.Celcius;
-		if (unit.Contains(c_farenheit))
-			return Temperature.Farenheit;
-		if (unit.Contains(c_kilometersPerHour))
-			return Velocity.KilometersPerHour;
-		if (unit.Contains(c_pascal))
-			return Pressure.Pascal;
-		if (unit.Contains(c_meter))
-			return Length.Meters;
-		if (unit.Contains(c_milimeter))
-			return Length.Milimeters;
-		if (unit.Contains(c_angle))
-			return WindDirection.Degrees;
-
-		return null;
+		return nwsUnit switch
+		{
+			(c_celcius) => Temperature.Celcius,
+			(c_farenheit) => Temperature.Farenheit,
+			(c_kilometersPerHour) => Velocity.KilometersPerHour,
+			(c_pascal) => Pressure.Pascal,
+			(c_meter) => Length.Meters,
+			(c_milimeter) => Length.Milimeters,
+			(c_angle) => WindDirection.Degrees,
+			_ => null,
+		};
 	}
 
 	private const string c_celcius = "degC";
