@@ -10,6 +10,9 @@ jobs:
     permissions:
       packages: write
       contents: read
+    strategy:
+      matrix:
+        projects: ["./Api/NWS.NET.Api.csproj", "./Common/NWS.NET.Common.csproj", "./NWS/NWS.NWT.NWS.csproj"]
     steps:
       - uses: actions/checkout@v3
       - name: Setup .NET
@@ -21,6 +24,6 @@ jobs:
           NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - run: dotnet build --configuration Release
       - name: Create the package
-        run: dotnet pack --configuration Release -o ./packages
+        run: dotnet pack ${{ matrix.projects }} --configuration Release --no-build -o ./packages
       - name: Publish the package to GPR
         run: dotnet nuget push ./packages/*.nupkg
