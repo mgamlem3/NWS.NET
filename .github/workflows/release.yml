@@ -12,7 +12,7 @@ jobs:
       contents: read
     strategy:
       matrix:
-        projects: ["./Api/NWS.NET.Api.csproj", "./Common/NWS.NET.Common.csproj", "./NWS/NWS.NWT.NWS.csproj"]
+        projects: ["./Api/NWS.NET.Api.csproj", "./Common/NWS.NET.Common.csproj", "./NWS/NWS.NET.NWS.csproj"]
     steps:
       - uses: actions/checkout@v3
       - name: Setup .NET
@@ -21,8 +21,8 @@ jobs:
           dotnet-version: '7.0.x' # SDK Version to use.
           source-url: https://nuget.pkg.github.com/mgamlem3/index.json
         env:
-          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-      - run: dotnet build --configuration Release
+          NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: dotnet build ${{ matrix.projects }} --configuration Release
       - name: Create the package
         run: dotnet pack ${{ matrix.projects }} --configuration Release --no-build -o ./packages
       - name: Publish the package to GPR
