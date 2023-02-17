@@ -2,7 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Common\NWS.NET.Common.csproj" />
-    <ProjectReference Include="..\NWS\NWS.csproj" />
+    <ProjectReference Include="..\NWS\NWS.NET.NWS.csproj" />
   </ItemGroup>
 
   <ItemGroup>
