@@ -1,6 +1,6 @@
 using System.Collections.ObjectModel;
 
-namespace NWS.Dtos.Components;
+namespace NWS.NET.NWS.Dtos.Components;
 
 public sealed record ForecastGeometry
 {

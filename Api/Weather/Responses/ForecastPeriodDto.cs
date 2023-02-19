@@ -3,7 +3,7 @@ namespace NWS.NET.Api.Weather;
 /// <summary>
 /// Represents a weather forecast for a defined period of time.
 /// </summary>
-public sealed record ForecastPeriod
+public sealed record ForecastPeriodDto
 {
 	public uint? Number { get; set; }
 	public string? Name { get; set; }

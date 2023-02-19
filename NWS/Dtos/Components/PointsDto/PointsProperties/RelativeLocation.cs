@@ -1,6 +1,6 @@
-using NWS.Dtos.Components.Common;
+using NWS.NET.NWS.Dtos.Components.Common;
 
-namespace NWS.Dtos.Components.PointsDto.PointsProperties;
+namespace NWS.NET.NWS.Dtos.Components.PointsDto.PointsProperties;
 
 public record RelativeLocation
 {

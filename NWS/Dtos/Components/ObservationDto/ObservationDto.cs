@@ -1,7 +1,6 @@
-using NWS.Dtos.Components.Common;
-using NWS.Dtos.Components.ObservationDto;
+using NWS.NET.NWS.Dtos.Components.Common;
 
-namespace NWS.Dtos;
+namespace NWS.NET.NWS.Dtos.Components.ObservationDto;
 
 public sealed record ObservationDto : NWSDto
 {

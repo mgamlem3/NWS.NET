@@ -1,6 +1,4 @@
-using NWS.Dtos.Components.PointsDto.PointsProperties;
-
-namespace NWS.Dtos.Components;
+namespace NWS.NET.NWS.Dtos.Components.PointsDto.PointsProperties;
 
 public sealed record PointsProperties
 {

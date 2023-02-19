@@ -6,9 +6,9 @@ namespace NWS.NET.Api.Interfaces;
 
 public interface IApiService
 {
-	Task<ReadOnlyCollection<CurrentConditions?>?> GetCurrentConditionsAsync(double latitude, double longitude);
+	Task<ReadOnlyCollection<CurrentConditionsDto?>?> GetCurrentConditionsAsync(double latitude, double longitude);
 
-	Task<Forecast?> GetForecastAsync(double latitude, double longitude);
+	Task<ForecastDto?> GetForecastAsync(double latitude, double longitude);
 
-	Task<CurrentConditions?> GetCurrentConditionsForStationAsync(WeatherStation? station);
+	Task<CurrentConditionsDto?> GetCurrentConditionsForStationAsync(WeatherStationDto? station);
 }

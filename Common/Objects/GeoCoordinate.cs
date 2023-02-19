@@ -6,6 +6,4 @@ public sealed class GeoCoordinate
 
 	public double Latitude { get; set; }
 	public double Longitude { get; set; }
-
-	public double GetDistanceTo(GeoCoordinate endCoordinate) => throw new NotImplementedException();
 }

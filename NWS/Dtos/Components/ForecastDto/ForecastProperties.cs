@@ -1,7 +1,7 @@
-using NWS.Dtos.Components.Common;
+using NWS.NET.NWS.Dtos.Components.Common;
 using System.Collections.ObjectModel;
 
-namespace NWS.Dtos.Components.ForecastDto;
+namespace NWS.NET.NWS.Dtos.Components.ForecastDto;
 
 public sealed record ForecastProperties
 {
@@ -12,5 +12,5 @@ public sealed record ForecastProperties
 	public DateTime UpdatedAt { get; set; }
 	public string ValidTimes { get; set; }
 	public Elevation Elevation { get; set; }
-	public ReadOnlyCollection<ForecastPeriodDto> Periods { get; set; }
+	public ReadOnlyCollection<NWSForecastPeriodDto> Periods { get; set; }
 }

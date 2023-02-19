@@ -1,6 +1,6 @@
 using System.Collections.ObjectModel;
 
-namespace NWS.Dtos.Components.Common;
+namespace NWS.NET.NWS.Dtos.Components.Common;
 
 public sealed record Geometry
 {
