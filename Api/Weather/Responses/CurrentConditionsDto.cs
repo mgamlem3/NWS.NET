@@ -2,10 +2,10 @@ using NWS.NET.Common.Objects;
 
 namespace NWS.NET.Api.Weather.Responses;
 
-public sealed class CurrentConditions
+public sealed class CurrentConditionsDto
 {
 	public DateTime? ObservationDate { get; set; }
-	public WeatherStation? WeatherStation { get; set; }
+	public WeatherStationDto? WeatherStation { get; set; }
 	public double? Temperature { get; set; }
 	public string? TemperatureUnit { get; set; }
 	public string? Description { get; set; }

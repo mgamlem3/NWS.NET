@@ -1,6 +1,6 @@
-namespace NWS.Dtos.Components.ForecastDto;
+namespace NWS.NET.NWS.Dtos.Components.ForecastDto;
 
-public sealed class ForecastPeriodDto
+public sealed class NWSForecastPeriodDto
 {
 	public uint? Number { get; set; }
 	public string? Name { get; set; }

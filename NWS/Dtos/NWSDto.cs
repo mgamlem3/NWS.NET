@@ -1,4 +1,4 @@
-namespace NWS.Dtos;
+namespace NWS.NET.NWS.Dtos;
 
 public partial record NWSDto
 {

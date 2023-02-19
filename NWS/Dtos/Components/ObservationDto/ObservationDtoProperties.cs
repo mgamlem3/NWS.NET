@@ -1,6 +1,6 @@
-using NWS.Dtos.Components.Common;
+using NWS.NET.NWS.Dtos.Components.Common;
 
-namespace NWS.Dtos.Components.ObservationDto;
+namespace NWS.NET.NWS.Dtos.Components.ObservationDto;
 
 public sealed record ObservationDtoProperties
 {

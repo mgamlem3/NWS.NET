@@ -1,37 +1,38 @@
-using NWS.Dtos;
-using NWS.Dtos.Components.ForecastDto;
-using NWS.Dtos.Components.StationDto;
 using NWS.NET.Common.Objects;
+using NWS.NET.NWS.Dtos;
+using NWS.NET.NWS.Dtos.Components.ForecastDto;
+using NWS.NET.NWS.Dtos.Components.ObservationDto;
+using NWS.NET.NWS.Dtos.Components.StationDto;
 using NWS.Units;
 
 namespace NWS.NET.Api.Weather.Responses;
 
 public static class NWSDtoMapper
 {
-	public static Forecast MapForecastDto(this ForecastDto dto, string rawContent)
+	public static ForecastDto MapForecastDto(this NWSForecastDto dto, string rawContent)
 	{
 		if (dto is null)
 			throw new ArgumentNullException(nameof(dto));
 
-		return new Forecast()
+		return new ForecastDto()
 		{
 			UpdatedAt = dto.Properties.UpdatedAt,
 			GeneratedAt = dto.Properties.GeneratedAt,
 			Elevation = dto.Properties.Elevation.Value,
 			ElevationUnit = dto.Properties.Elevation.Value is null ? null : NWSUnits.Map(dto.Properties.Elevation.UnitCode),
-			Periods = new List<ForecastPeriod>(),
+			Periods = new List<ForecastPeriodDto>(),
 			RawData = rawContent,
 		};
 	}
 
-	public static ForecastPeriod MapForecastPeriod(this ForecastPeriodDto dto)
+	public static ForecastPeriodDto MapForecastPeriod(this NWSForecastPeriodDto dto)
 	{
 		if (dto is null)
 			throw new ArgumentNullException(nameof(dto));
 
 		_ = double.TryParse(dto.WindSpeed, out var windSpeed);
 
-		return new ForecastPeriod()
+		return new ForecastPeriodDto()
 		{
 			Number = dto.Number,
 			Name = dto.Name,
@@ -48,7 +49,7 @@ public static class NWSDtoMapper
 		};
 	}
 
-	public static CurrentConditions MapObservation(this ObservationDto dto, WeatherStation? station = null, string? rawContent = null) => new()
+	public static CurrentConditionsDto MapObservation(this ObservationDto dto, WeatherStationDto? station = null, string? rawContent = null) => new()
 	{
 		ObservationDate = dto?.Properties?.Timestamp,
 		WeatherStation = station,
@@ -77,7 +78,7 @@ public static class NWSDtoMapper
 		// TODO: add cloud layers
 	};
 
-	public static WeatherStation MapWeatherStation(this StationFeature feature) => new()
+	public static WeatherStationDto MapWeatherStation(this StationFeature feature) => new()
 	{
 		Latitude = feature?.Geometry?.Coordinates[0],
 		Longitude = feature?.Geometry?.Coordinates[1],
